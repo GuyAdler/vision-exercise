@@ -3,10 +3,12 @@ import matplotlib.pyplot as plt
 from scipy import ndimage
 import scipy.ndimage.filters as scifilt
 
+
 def DispGrayImage(axis, pic, title):
     axis.imshow(pic, cmap='gray')
     axis.axis('off')
     axis.set_title(title)
+
 
 def DispColorImage(axis, pic, title):
     axis.imshow(pic)

@@ -20,6 +20,7 @@ print("Original matrix:")
 print(OriginalImage)
 
 OriginalWithMeanFilter = scisig.convolve2d(OriginalImage, mean_filter)
+OriginalWithMeanFilter = OriginalWithMeanFilter[1:6, 1:6]
 
 print("\nApplying mean filter:")
 print(OriginalWithMeanFilter)
@@ -31,7 +32,9 @@ print("\nApplying median filter:")
 print(OriginalWithMedianFilter)
 
 # Sigma chosen randomly.
-OriginalWithGaussianFilter = scifilt.gaussian_filter(OriginalImage, sigma=0.5)
+# mode='constant' is padding with zeros (the default constant value is 0)
+OriginalWithGaussianFilter = scifilt.gaussian_filter(OriginalImage, sigma=0.5, mode='constant')
+
 
 print("\nApplying gaussian filter:")
 print(OriginalWithGaussianFilter)
@@ -95,7 +98,7 @@ fig2, axes2 = plt.subplots(3, 3)
 axes2[0, 0].imshow(CameraManNoise, cmap='gray')
 axes2[0, 0].axis('off')
 axes2[0, 0].set_title("Camera man with noise")
-axes2[0, 1].imshow(HouseNoise, cmap='gray')
+axes2[0, 1].imshow(HouseNoise, cmap='gray') 
 axes2[0, 1].axis('off')
 axes2[0, 1].set_title("House with noise")
 axes2[0, 2].imshow(LenaNoise, cmap='gray')
